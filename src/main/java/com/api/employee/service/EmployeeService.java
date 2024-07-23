@@ -13,6 +13,9 @@ public class EmployeeService  {
     EmployeeRepository employeeRepository;
 
     //create
+    public Employee createEmployee(Employee employee){
+        return employeeRepository.save(employee);
+    }
 
     //read
     public List<Employee> findAllEmployees() {
