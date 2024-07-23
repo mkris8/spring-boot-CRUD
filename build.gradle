@@ -13,11 +13,13 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.3.0'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	runtimeOnly 'com.h2database:h2' // Use H2 for an in-memory database.
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 }
 
 test {
