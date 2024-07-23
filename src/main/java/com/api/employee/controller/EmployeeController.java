@@ -16,8 +16,9 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    @GetMapping("/api/employees")
+    @GetMapping("/all")
     public List<Employee> getAllEmployees() {
+        System.out.println("Getting all the employees .....");
         return employeeService.findAllEmployees();
     }
 
