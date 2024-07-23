@@ -1,4 +1,4 @@
-package com.api.employee;
+package com.api.employee.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

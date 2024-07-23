@@ -1,4 +1,4 @@
-package com.api.employee;
+package com.api.employee.controller;
 
 import java.util.Arrays;
 
