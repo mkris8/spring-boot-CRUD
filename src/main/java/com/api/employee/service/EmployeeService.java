@@ -14,7 +14,7 @@ public class EmployeeService  {
     EmployeeRepository employeeRepository;
 
     //create
-    public Employee createEmployee(Employee employee){
+    public Employee saveEmployee(Employee employee){
         return employeeRepository.save(employee);
     }
 
@@ -27,6 +27,7 @@ public class EmployeeService  {
     }
 
     //update
+
 
 
     //delete

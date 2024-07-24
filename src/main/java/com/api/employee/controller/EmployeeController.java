@@ -30,9 +30,17 @@ public class EmployeeController {
     @PostMapping("/create")
     public Employee createEmployee(@RequestBody Employee employee){
         System.out.println("Creating an employee .....");
-        return employeeService.createEmployee(employee);
+        return employeeService.saveEmployee(employee);
     }
 
-
+    @PostMapping("/update")
+    public Employee updateEmployee(@RequestBody Employee newEmployee) {
+        //find existing employee with same id as the new employee
+        Optional<Employee> existingEmployee = employeeService.findEmployeeById(newEmployee.getId());
+        // update the details of the existing employee with incoming new employee
+        existingEmployee.get().setName(newEmployee.getName());
+        //save existing employee with new details and return
+        return employeeService.saveEmployee(existingEmployee.get());
+    }
 
 }
