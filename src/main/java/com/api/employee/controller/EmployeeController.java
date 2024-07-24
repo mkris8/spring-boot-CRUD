@@ -42,5 +42,9 @@ public class EmployeeController {
         //save existing employee with new details and return
         return employeeService.saveEmployee(existingEmployee.get());
     }
+    @GetMapping("/delete/{id}")
+    public void deleteEmployee(@PathVariable Integer id){
+        employeeService.deleteEmployee(id);
+    }
 
 }

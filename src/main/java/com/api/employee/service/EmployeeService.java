@@ -26,10 +26,9 @@ public class EmployeeService  {
         return employeeRepository.findById(id);
     }
 
-    //update
-
-
-
     //delete
+    public void deleteEmployee(Integer id) {
+        employeeRepository.deleteById(id);
+    }
 
 }
