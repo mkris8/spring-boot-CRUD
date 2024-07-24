@@ -1,5 +1,6 @@
 package com.api.employee.controller;
 
+import com.api.employee.dto.EmployeeDTO;
 import com.api.employee.entity.Employee;
 import com.api.employee.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,26 +25,36 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Employee> getEmployeeById(@PathVariable Integer id) {
+    public EmployeeDTO getEmployeeById(@PathVariable Integer id) {
         log.info("Getting employee by Id .....");
+        //return employeeService.findEmployeeById(id);
+        //return DTO instead of entity
         return employeeService.findEmployeeById(id);
     }
 
     @PostMapping("/create")
-    public Employee createEmployee(@RequestBody Employee employee){
+    public EmployeeDTO createEmployee(@RequestBody Employee employee){
         log.info("Creating an employee .....");
-        return employeeService.saveEmployee(employee);
+        //return DTO instead of Entity here
+        //return employeeService.saveEmployee(employee);
+        employeeService.saveEmployee(employee);
+        return new EmployeeDTO(employee.getId(),employee.getName());
     }
 
     @PostMapping("/update")
-    public Employee updateEmployee(@RequestBody Employee newEmployee) {
-        //find existing employee with same id as the new employee
-        Optional<Employee> existingEmployee = employeeService.findEmployeeById(newEmployee.getId());
-        // update the details of the existing employee with incoming new employee
-        existingEmployee.get().setName(newEmployee.getName());
-        //save existing employee with new details and return
-        return employeeService.saveEmployee(existingEmployee.get());
+    public EmployeeDTO updateEmployee(@RequestBody Employee incomingEmployee) {
+        EmployeeDTO employeeDTO = employeeService.findEmployeeById(incomingEmployee.getId());
+        Employee employee = new Employee();
+        employee.setId(employeeDTO.id());
+        employee.setName(incomingEmployee.getName());
+        employeeService.saveEmployee(employee);
+        return employeeService.saveEmployee(employee);
+
+
+
+
     }
+
     @GetMapping("/delete/{id}")
     public void deleteEmployee(@PathVariable Integer id){
         employeeService.deleteEmployee(id);

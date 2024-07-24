@@ -1,5 +1,6 @@
 package com.api.employee.service;
 
+import com.api.employee.dto.EmployeeDTO;
 import com.api.employee.entity.Employee;
 import com.api.employee.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +15,24 @@ public class EmployeeService  {
     EmployeeRepository employeeRepository;
 
     //create
-    public Employee saveEmployee(Employee employee){
-        return employeeRepository.save(employee);
+    public EmployeeDTO saveEmployee(Employee employee){
+        //return DTO instead of Entity here
+//        return employeeRepository.save(employee);
+        employee = employeeRepository.save(employee);
+        return new EmployeeDTO(employee.getId(),employee.getName());
     }
 
     //read
     public List<Employee> findAllEmployees() {
         return employeeRepository.findAll();
     }
-    public Optional<Employee> findEmployeeById(Integer id) {
-        return employeeRepository.findById(id);
+    public EmployeeDTO findEmployeeById(Integer id) {
+        //return employeeRepository.findById(id);
+        //return DTO instead of Entity here
+        Optional<Employee> employee = employeeRepository.findById(id);
+        //get id and name from optional , set into dto record and return
+        EmployeeDTO employeeDTO = new EmployeeDTO(employee.get().getId() , employee.get().getName());
+        return employeeDTO;
     }
 
     //delete
