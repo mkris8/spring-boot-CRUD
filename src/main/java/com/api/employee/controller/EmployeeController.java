@@ -30,6 +30,7 @@ public class EmployeeController {
         log.info("Getting employee by Id .....");
         //return employeeService.findEmployeeById(id);
         //return DTO instead of entity
+        // no exception handling needed here in the controller. This is handled in service
         return employeeService.findEmployeeById(id);
     }
 
@@ -44,6 +45,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/update")
+    //find an existing employee with a given id and overwrite it.
     public EmployeeDTO updateEmployee(@Valid @RequestBody Employee incomingEmployee) {
         EmployeeDTO employeeDTO = employeeService.findEmployeeById(incomingEmployee.getId());
         Employee employee = new Employee();
@@ -53,6 +55,12 @@ public class EmployeeController {
         employeeService.saveEmployee(employee);
         return employeeService.saveEmployee(employee);
 
+    }
+
+    @PostMapping("/insert")
+    //if an employee already exists, then abort. Else insert.
+    public EmployeeDTO insertEmployee(@Valid @RequestBody Employee incomingEmployee) {
+        return employeeService.updateEmployee(incomingEmployee);
     }
 
     @GetMapping("/delete/{id}")
