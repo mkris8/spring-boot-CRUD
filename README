@@ -1,11 +1,2 @@
-Uses spring boot crud with DTO
+Integrate validations into Spring Boot application
 -------------------------------
-Data Transfer Object is a design pattern that allows for the exchange of data between software application subsystems or layers, often between the business logic layer and the presentation or persistence layer. The primary goal of DTOs is to reduce the number of method calls between these layers by aggregating data into a single object.
-
-DTOs are commonly used to encapsulate data transferred between the controller and service layers, or between the service layer and the persistence layer.
-
-DTOs help minimize the number of calls between different layers, especially in a microservices architecture where services communicate over a network.
-
-Transmitting only the necessary data instead of entire entities reduces bandwidth and minimizes data transfer overhead
-
-Using DTO as Records - these become immutable, which can simplify reasoning about your data and avoid unintended side effects.
