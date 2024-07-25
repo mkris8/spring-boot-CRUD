@@ -1,19 +1,9 @@
-Integrate validations into Spring Boot application
---------------------------------------------------
+Handling exceptions in  Spring Boot application
+===============================================
+1) Custom Exception Classes: Define custom exceptions for specific error conditions.
 
-Test using postman
-GET http://localhost:8080/api/employees/all
-POST http://localhost:8080/api/employees/create
-{
-    "id": 1,
-    "name": "John",
-    "password": "Doe1"
-}
-GET http://localhost:8080/api/employees/1
-POST http://localhost:8080/api/employees/update
-{
-  "id": 1,
-  "name": "John",
-  "password": "Pwd1"
-}
-GET http://localhost:8080/api/employees/delete/1
+2) Global Exception Handler: Use @ControllerAdvice and @ExceptionHandler to handle exceptions globally.
+
+3) Controller: Throw exceptions as needed, and let the global exception handler manage them.
+
+4) Custom Error Responses: Customize error responses to provide meaningful feedback to clients.
