@@ -17,11 +17,14 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    //validations added here
+    //General validations for name added here
     @NotNull(message = "message should not be empty")
     @NotBlank(message = "name should not be blank")
     @Size(min=1, max = 5, message = "min size should be 1 and max 5")
     @Pattern(regexp = "^[A-Z].*", message = "Must start with a capital letter")
     private String name;
+
+    //using custom validations for password here
+    private String password;
 }
 

@@ -40,7 +40,7 @@ public class EmployeeController {
         //return DTO instead of Entity here
         //return employeeService.saveEmployee(employee);
         employeeService.saveEmployee(employee);
-        return new EmployeeDTO(employee.getId(),employee.getName());
+        return new EmployeeDTO(employee.getId(),employee.getName(), employee.getPassword());
     }
 
     @PostMapping("/update")
@@ -49,6 +49,7 @@ public class EmployeeController {
         Employee employee = new Employee();
         employee.setId(employeeDTO.id());
         employee.setName(incomingEmployee.getName());
+        employee.setPassword(incomingEmployee.getPassword());
         employeeService.saveEmployee(employee);
         return employeeService.saveEmployee(employee);
 

@@ -19,7 +19,7 @@ public class EmployeeService  {
         //return DTO instead of Entity here
 //        return employeeRepository.save(employee);
         employee = employeeRepository.save(employee);
-        return new EmployeeDTO(employee.getId(),employee.getName());
+        return new EmployeeDTO(employee.getId(),employee.getName(),employee.getPassword());
     }
 
     //read
@@ -31,7 +31,7 @@ public class EmployeeService  {
         //return DTO instead of Entity here
         Optional<Employee> employee = employeeRepository.findById(id);
         //get id and name from optional , set into dto record and return
-        EmployeeDTO employeeDTO = new EmployeeDTO(employee.get().getId() , employee.get().getName());
+        EmployeeDTO employeeDTO = new EmployeeDTO(employee.get().getId() , employee.get().getName(),employee.get().getPassword());
         return employeeDTO;
     }
 
