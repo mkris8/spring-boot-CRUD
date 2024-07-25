@@ -1,4 +1,5 @@
 package com.api.employee.entity;
+import com.api.employee.validation.annotation.validator.annotaton.ValidPassword;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class Employee {
     private String name;
 
     //using custom validations for password here
+    @ValidPassword
     private String password;
 }
 

@@ -1,2 +1,19 @@
 Integrate validations into Spring Boot application
--------------------------------
+--------------------------------------------------
+
+Test using postman
+GET http://localhost:8080/api/employees/all
+POST http://localhost:8080/api/employees/create
+{
+    "id": 1,
+    "name": "John",
+    "password": "Doe1"
+}
+GET http://localhost:8080/api/employees/1
+POST http://localhost:8080/api/employees/update
+{
+  "id": 1,
+  "name": "John",
+  "password": "Pwd1"
+}
+GET http://localhost:8080/api/employees/delete/1
