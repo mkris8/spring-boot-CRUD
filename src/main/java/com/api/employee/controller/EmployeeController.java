@@ -3,6 +3,7 @@ package com.api.employee.controller;
 import com.api.employee.dto.EmployeeDTO;
 import com.api.employee.entity.Employee;
 import com.api.employee.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/create")
-    public EmployeeDTO createEmployee(@RequestBody Employee employee){
+    // validation added with @Valid
+    public EmployeeDTO createEmployee(@Valid @RequestBody Employee employee){
         log.info("Creating an employee .....");
         //return DTO instead of Entity here
         //return employeeService.saveEmployee(employee);
@@ -42,7 +44,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/update")
-    public EmployeeDTO updateEmployee(@RequestBody Employee incomingEmployee) {
+    public EmployeeDTO updateEmployee(@Valid @RequestBody Employee incomingEmployee) {
         EmployeeDTO employeeDTO = employeeService.findEmployeeById(incomingEmployee.getId());
         Employee employee = new Employee();
         employee.setId(employeeDTO.id());
