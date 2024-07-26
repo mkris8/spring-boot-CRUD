@@ -1,32 +1,7 @@
-Handling exceptions in  Spring Boot application
-===============================================
-1) Custom Exception Classes: Define custom exceptions for specific error conditions.
-
-2) Global Exception Handler: Use @ControllerAdvice and @ExceptionHandler to handle exceptions globally.
-
-3) Controller: Throw exceptions as needed, and let the global exception handler manage them.
-
-4) Custom Error Responses: Customize error responses to provide meaningful feedback to clients.
-
-Testing using postman
-=====================
-The below should be accessible without any authentication:
-http://localhost:8080/api/employees/all
-http://localhost:8080/api/employees/create
-{
-    "id": 1,
-    "name": "John",
-    "password": "Doe1"
-}
-
-Any other endpoint will need to go through authentication:
-http://localhost:8080/api/employees/admin
-admin/adminpass
-http://localhost:8080/api/user
-user/userpass
-
-Go to the Authorization tab in postman
-Select Basic Auth from the dropdown.
-Enter the username (admin) and password (adminpass).
-Send the request.
-You should receive a response if the credentials are correct.
+Database persistence with spring security
+=========================================
+Load default values like usernames, passwords, and roles dynamically from an H2 database.
+- Create SQL Scripts for Initial Data
+- Configure Spring Boot to Run SQL Scripts on Startup
+- Ensure passwords are encrypted before storing them in the database.
+    - For this, create an endpoint that encrypts the input password and returns the encrypted value.
