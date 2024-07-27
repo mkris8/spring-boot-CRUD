@@ -4,4 +4,7 @@ Load default values like usernames, passwords, and roles dynamically from an H2 
 - Create SQL Scripts for Initial Data
 - Configure Spring Boot to Run SQL Scripts on Startup
 - Ensure passwords are encrypted before storing them in the database.
-    - For this, create an endpoint that encrypts the input password and returns the encrypted value.
+    - For this, created an endpoint that encrypts the input password and returns the encrypted value.
+    - Using postman
+      http://localhost:8080/authenticate/encrypt/<input-string-to-encrypt>
+
