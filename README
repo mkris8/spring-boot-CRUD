@@ -7,4 +7,9 @@ Load default values like usernames, passwords, and roles dynamically from an H2 
     - For this, created an endpoint that encrypts the input password and returns the encrypted value.
     - Using postman
       http://localhost:8080/authenticate/encrypt/<input-string-to-encrypt>
-
+    - To save a new role with encrypted password
+    POST http://localhost:8080/authenticate/saverole
+    {
+        "username": "John",
+        "password": "Doe"
+    }
